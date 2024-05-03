@@ -222,7 +222,7 @@
                                 </state>
                                 <connections>
                                     <action selector="buttonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="7lz-5h-Rvo"/>
-                                    <segue destination="5CN-op-J7e" kind="show" identifier="CALCULATIONS_LIST" id="Qmg-jN-wWP"/>
+                                    <action selector="showCalculationsList:" destination="BYZ-38-t0r" eventType="touchUpInside" id="2fU-dl-YP8"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -322,34 +322,33 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
-                <exit id="6zf-wk-gQg" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="127.48091603053435" y="-4.2253521126760569"/>
         </scene>
         <!--Calculations List View Controller-->
         <scene sceneID="VZW-ip-fcm">
             <objects>
-                <viewController id="5CN-op-J7e" customClass="CalculationsListViewController" customModule="TinkoffCalculator" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CalculationsListViewController" id="5CN-op-J7e" customClass="CalculationsListViewController" customModule="TinkoffCalculator" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Bls-9B-SJG">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XhB-6x-V6T">
-                                <rect key="frame" x="196.66666666666666" y="421" width="0.0" height="0.0"/>
+                                <rect key="frame" x="196.66666666666666" y="426" width="0.0" height="0.0"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ck0-zW-1fA">
-                                <rect key="frame" x="151.33333333333334" y="493.33333333333331" width="90.666666666666657" height="34.999999999999943"/>
+                                <rect key="frame" x="151.33333333333334" y="498.33333333333326" width="90.666666666666657" height="35"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Закрыть"/>
                                 <connections>
-                                    <segue destination="6zf-wk-gQg" kind="unwind" unwindAction="unwindActionWithUnwindSeque:" id="CTp-fp-9Mo"/>
+                                    <action selector="dismissVC:" destination="5CN-op-J7e" eventType="touchUpInside" id="gCD-B7-d0e"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Результат" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oio-6u-8e7">
-                                <rect key="frame" x="157" y="330.33333333333331" width="79" height="21"/>
+                                <rect key="frame" x="157" y="335.33333333333331" width="79" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>

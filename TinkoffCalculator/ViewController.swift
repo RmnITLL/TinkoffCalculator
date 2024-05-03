@@ -112,7 +112,16 @@ class ViewController: UIViewController {
         calculationsListVC.result = label.text
     }
         
+    @IBAction func showCalculationsList(_ sender: Any) {
+        let sb = UIStoryboard(name: "Main", bundle: nil)
+        let calculationsListVC = sb.instantiateViewController(withIdentifier: "CalculationsListViewController")
+        if let vc = calculationsListVC as? CalculationsListViewController {
+            vc.result = label.text
+        }
         
+        show(calculationsListVC, sender: self)
+    }
+    
         @IBOutlet weak var label: UILabel!
         
         var calculationHistory: [CalculationHistoryItem] = []
