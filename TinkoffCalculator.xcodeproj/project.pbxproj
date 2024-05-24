@@ -21,7 +21,7 @@
 		29B1DCB92BD7A35700D2C5C8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 292736982BD6EEB300A19C41 /* Main.storyboard */; };
 		29B360BB2BE537C1004F3DD8 /* CalculationsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29B360BA2BE537C1004F3DD8 /* CalculationsListViewController.swift */; };
 		29DE19402C00AB290096E88C /* HistoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DE193F2C00AB290096E88C /* HistoryTableViewCell.swift */; };
-		29DE19422C00B3BF0096E88C /* HistoryTableViewCall.xib in Resources */ = {isa = PBXBuildFile; fileRef = 29DE19412C00B3BF0096E88C /* HistoryTableViewCall.xib */; };
+		29DE19422C00B3BF0096E88C /* HistoryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 29DE19412C00B3BF0096E88C /* HistoryTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,7 +57,7 @@
 		296130EA2BDAACAA00CEBED2 /* TinkoffCalculatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TinkoffCalculatorTests.swift; sourceTree = "<group>"; };
 		29B360BA2BE537C1004F3DD8 /* CalculationsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculationsListViewController.swift; sourceTree = "<group>"; };
 		29DE193F2C00AB290096E88C /* HistoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryTableViewCell.swift; sourceTree = "<group>"; };
-		29DE19412C00B3BF0096E88C /* HistoryTableViewCall.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HistoryTableViewCall.xib; sourceTree = "<group>"; };
+		29DE19412C00B3BF0096E88C /* HistoryTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HistoryTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,7 +90,7 @@
 			children = (
 				29B360BA2BE537C1004F3DD8 /* CalculationsListViewController.swift */,
 				29DE193F2C00AB290096E88C /* HistoryTableViewCell.swift */,
-				29DE19412C00B3BF0096E88C /* HistoryTableViewCall.xib */,
+				29DE19412C00B3BF0096E88C /* HistoryTableViewCell.xib */,
 			);
 			path = History;
 			sourceTree = "<group>";
@@ -253,7 +253,7 @@
 			files = (
 				2927369C2BD6EEB500A19C41 /* Assets.xcassets in Resources */,
 				2927369F2BD6EEB500A19C41 /* Base in Resources */,
-				29DE19422C00B3BF0096E88C /* HistoryTableViewCall.xib in Resources */,
+				29DE19422C00B3BF0096E88C /* HistoryTableViewCell.xib in Resources */,
 				2927369A2BD6EEB300A19C41 /* Base in Resources */,
 				29B1DCB92BD7A35700D2C5C8 /* Main.storyboard in Resources */,
 			);
