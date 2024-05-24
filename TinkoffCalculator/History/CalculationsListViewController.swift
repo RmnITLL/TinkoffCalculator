@@ -7,11 +7,14 @@
 
 import UIKit
 
-class CalculationsListViewController: UIViewController {
+class CalculationsListViewController: UIViewController, UITableViewDelegate {
     
-    var result: String?
     
+    var calculations: [(expression: [CalculationHistoryItem], result: Double)] = []
     @IBOutlet weak var calculationLabel: UILabel!
+    @IBOutlet weak var tableView: UITableView!
+    
+    
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         initialize()
@@ -28,7 +31,10 @@ class CalculationsListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        calculationLabel.text = result
+        
+        //tableView.delegate = self
+      //  tableView.dataSource = self
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -41,3 +47,25 @@ class CalculationsListViewController: UIViewController {
     }
     
 }
+
+//extension CalculationsListViewController: UITextViewDelegate {
+//    
+//        
+//}
+    
+  /*
+extension CalculationsListViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        <#code#>
+    }
+    
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 0
+    }
+    
+
+
+}
+*/
+
