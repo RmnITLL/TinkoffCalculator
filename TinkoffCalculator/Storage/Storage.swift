@@ -1,15 +1,16 @@
-//
-//  Storage.swift
-//  TinkoffCalculator
-//
-//  Created by R Kolos on 25.01.2025.
-//
+    //
+    //  Storage.swift
+    //  TinkoffCalculator
+    //
+    //  Created by R Kolos on 25.01.2025.
+    //
 
 import Foundation
 
 struct Calculation {
     let expression: [CalculationHistoryItem]
     let result: Double
+    let date: Date
 }
 
 extension Calculation: Codable {
@@ -23,19 +24,19 @@ extension CalculationHistoryItem: Codable {
     }
 
     func encode(to encoder: Encoder) throws {
-        var conteiner = encoder.container(keyedBy: CodingKeys.self)
+        var container = encoder.container(keyedBy: CodingKeys.self)
 
         switch self {
             case .number(let value):
-                try conteiner.encode(value, forKey: CodingKeys.number)
+                try container.encode(value, forKey: CodingKeys.number)
             case .operation(let value):
-                try conteiner
+                try container
                     .encode(value.rawValue, forKey: CodingKeys.operation)
         }
     }
 
     enum CalculationHistoryItemError: Error {
-        case itenNotFound
+        case itemNotFound
     }
 
     init(from decoder: Decoder) throws {
@@ -55,11 +56,11 @@ extension CalculationHistoryItem: Codable {
             return
         }
 
-        throw CalculationHistoryItemError.itenNotFound
+        throw CalculationHistoryItemError.itemNotFound
     }
 }
 
-class CalculationHisoryStorage {
+class CalculationHistoryStorage {
 
     static let calculationHistoryKey = "calculationHistoryKey"
 
@@ -68,14 +69,14 @@ class CalculationHisoryStorage {
             UserDefaults.standard
                 .set(
                     encoded,
-                    forKey: CalculationHisoryStorage.calculationHistoryKey
+                    forKey: CalculationHistoryStorage.calculationHistoryKey
                 )
         }
     }
 
     func loadHistory() -> [Calculation] {
         if let data = UserDefaults.standard.data(
-            forKey: CalculationHisoryStorage.calculationHistoryKey
+            forKey: CalculationHistoryStorage.calculationHistoryKey
         ) {
             return (try? JSONDecoder().decode([Calculation].self, from: data)) ?? []
         }

@@ -1,9 +1,9 @@
-//
-//  CalculationsListViewController.swift
-//  TinkoffCalculator
-//
-//  Created by R Kolos on 22.01.2025.
-//
+    //
+    //  CalculationsListViewController.swift
+    //  TinkoffCalculator
+    //
+    //  Created by R Kolos on 22.01.2025.
+    //
 
 import UIKit
 
@@ -13,7 +13,7 @@ class CalculationsListViewController: UIViewController {
 
     var calculations:[Calculation] = []
 
-    //@IBOutlet weak var calculationLabel: UILabel!
+        //@IBOutlet weak var calculationLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
 
     override init(
@@ -39,13 +39,11 @@ class CalculationsListViewController: UIViewController {
 
         let nib = UINib(nibName: "HistoryTableViewCell", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: "HistoryTableViewCell")
-
-        addDateHeaderToTableView(tableView: tableView)
-
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+
         navigationController?.setNavigationBarHidden(false, animated: false)
     }
 
@@ -73,55 +71,53 @@ class CalculationsListViewController: UIViewController {
                     result += String(value) + " "
                 case let .operation(value):
                     result += value.rawValue + " "
-
             }
         }
-
         return result
     }
-
-    private func addDateHeaderToTableView(tableView: UITableView) {
-        let headerView = UIView(frame: CGRect(
-            x: 0,
-            y: 0,
-            width: tableView.bounds.size.width,
-            height: 50
-        ))
-
-        headerView.backgroundColor = UIColor.systemBackground
-
-        let headerLabel = UILabel(
-            frame: CGRect(
-                x: 16,
-                y: 0,
-                width: tableView.bounds.size.width - 32,
-                height: 50
-            )
-        )
-        headerLabel.textColor = UIColor.label
-        headerLabel.textAlignment = .center
-        headerLabel.font = UIFont.systemFont(ofSize: 16)
-
-        let dateFormater = DateFormatter()
-        dateFormater.dateFormat = "dd.MM.yyyy  hh:mm"
-        let currentDate = dateFormater.string(from: Date())
-        headerLabel.text = currentDate
-
-        headerView.addSubview(headerLabel)
-        tableView.tableHeaderView = headerView
-    }
 }
+
 
 extension CalculationsListViewController: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 90
+        return 90.0
+    }
+
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerView = UIView()
+        headerView.backgroundColor = UIColor.lightGray
+
+        let dateFormater = DateFormatter()
+        dateFormater.dateFormat = "dd.MM.yyyy hh:mm"
+
+        let label = UILabel()
+        label.text = dateFormater.string(from: calculations[section].date)
+        label.textColor = UIColor.white
+
+        headerView.addSubview(label)
+
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.leadingAnchor
+            .constraint(
+                equalTo: headerView.leadingAnchor,
+                constant: 10.0
+            ).isActive = true
+        label.centerYAnchor
+            .constraint(equalTo: headerView.centerYAnchor).isActive = true
+
+        return headerView
     }
 }
 
 extension CalculationsListViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
+
+
+    func numberOfSections(in tableView: UITableView) -> Int {
         return calculations.count
     }
 
@@ -130,16 +126,15 @@ extension CalculationsListViewController: UITableViewDataSource {
             withIdentifier: "HistoryTableViewCell",
             for: indexPath
         ) as! HistoryTableViewCell
-        cell.layer.cornerRadius = 10
+        cell.layer.cornerRadius = 4
         cell.layer.borderWidth = 1.0
         cell.layer.borderColor = UIColor.gray.cgColor
 
-        let historyItem = calculations[indexPath.row]
+        let historyItem = calculations[indexPath.section]
         cell.configure(
-                with: expressionToString(historyItem.expression),
-                result: String(historyItem.result)
-            )
-
+            with: expressionToString(historyItem.expression),
+            result: String(historyItem.result)
+        )
         return cell
     }
 }
