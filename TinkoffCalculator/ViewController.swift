@@ -111,11 +111,18 @@ final class ViewController: UIViewController {
         alertView.alpha = 0
         alertView.alertText = "Вы нашли пасхалку!"
 
+        view.subviews.forEach {
+            if type(of: $0) == UIButton.self {
+                $0.layer.cornerRadius = 45
+            }
+        }
+
         view.addSubview(shared)
         shared.alpha = 0
         let tap = UILongPressGestureRecognizer()
         tap.addTarget(self, action: #selector(longPressGesture(_:)))
         view.addGestureRecognizer(tap)
+
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -285,6 +292,7 @@ final class ViewController: UIViewController {
             }
         }
     }
+
 }
 
 extension UILabel {
